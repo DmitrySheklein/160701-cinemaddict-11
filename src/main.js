@@ -1,16 +1,18 @@
+'use strict';
+
 const countsFilmCards = {
   MAIN: 5,
   TOP_RATED: 2,
   MOST_COMMENTED: 2
-}
+};
 const createHeaderProfileTemplate = () => {
-  return(`
+  return (`
   <section class="header__profile profile">
     <p class="profile__rating">Movie Buff</p>
     <img class="profile__avatar" src="images/bitmap@2x.png" alt="Avatar" width="35" height="35">
   </section>
-  `)
-}
+  `);
+};
 const createMainNavigationTemplate = () => {
   return (`
   <nav class="main-navigation">
@@ -22,8 +24,8 @@ const createMainNavigationTemplate = () => {
     </div>
     <a href="#stats" class="main-navigation__additional">Stats</a>
   </nav>
-  `)
-}
+  `);
+};
 
 const createSortTemplate = () => {
   return (`
@@ -32,13 +34,13 @@ const createSortTemplate = () => {
     <li><a href="#" class="sort__button">Sort by date</a></li>
     <li><a href="#" class="sort__button">Sort by rating</a></li>
   </ul>
-  `)
-}
+  `);
+};
 const createStatTemplate = () => {
   return (`
   <p>130 291 movies inside</p>
-  `)
-}
+  `);
+};
 const createFilmCardTemplate = () => {
   return (`
   <article class="film-card">
@@ -58,13 +60,13 @@ const createFilmCardTemplate = () => {
     <button class="film-card__controls-item button film-card__controls-item--favorite">Mark as favorite</button>
   </form>
   </article>
-  `)
-}
+  `);
+};
 const createShowMoreBtnTemplate = () => {
   return (`
   <button class="films-list__show-more">Show more</button>
-  `)
-}
+  `);
+};
 const createPopUpTemplate = () => {
   return (`
   <section class="film-details visually-hidden">
@@ -236,10 +238,10 @@ const createPopUpTemplate = () => {
     </div>
   </form>
 </section>
-  `)
-}
+  `);
+};
 const createFilmCardBlockTemplate = (cardsCount, contentData) => {
-  const { title: {text, isHidden}, isExtraBlock, isShowMore} = contentData;
+  const {title: {text, isHidden}, isExtraBlock, isShowMore} = contentData;
 
   const textTitle = typeof text === `string` ? text : ``;
   const hiddenClass = isHidden ? ` visually-hidden` : ``;
@@ -254,39 +256,39 @@ const createFilmCardBlockTemplate = (cardsCount, contentData) => {
     </div>
     ${showMoreBtnTemplate}
   </section>
-  `)
-}
+  `);
+};
 
-const createMainFilmsTemplate  = () => {
+const createMainFilmsTemplate = () => {
 
   const blockFilmCardMain = createFilmCardBlockTemplate(
-    countsFilmCards.MAIN, {
-      title: {
-        text: `All movies. Upcoming`,
-        isHidden: true
-      },
-      isShowMore: true
-    }
+      countsFilmCards.MAIN, {
+        title: {
+          text: `All movies. Upcoming`,
+          isHidden: true
+        },
+        isShowMore: true
+      }
   );
 
   const blockFilmCardTop = createFilmCardBlockTemplate(
-    countsFilmCards.TOP_RATED, {
-      title: {
-        text: `Top rated`,
-        isHidden: false
-      },
-      isExtraBlock: true,
-    }
+      countsFilmCards.TOP_RATED, {
+        title: {
+          text: `Top rated`,
+          isHidden: false
+        },
+        isExtraBlock: true,
+      }
   );
 
   const blockFilmCardCommented = createFilmCardBlockTemplate(
-    countsFilmCards.MOST_COMMENTED, {
-      title: {
-        text: `Most commented`,
-        isHidden: false
-      },
-      isExtraBlock: true,
-    }
+      countsFilmCards.MOST_COMMENTED, {
+        title: {
+          text: `Most commented`,
+          isHidden: false
+        },
+        isExtraBlock: true,
+      }
   );
 
   return (`
@@ -295,12 +297,12 @@ const createMainFilmsTemplate  = () => {
       ${blockFilmCardTop}
       ${blockFilmCardCommented}
     </section>
-  `)
-}
+  `);
+};
 
 const render = (container, template, place = `beforeend`) => {
   container.insertAdjacentHTML(place, template);
-}
+};
 
 const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = document.querySelector(`.header`);
